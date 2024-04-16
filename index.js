@@ -6,9 +6,14 @@ const port = 4000
 // const tables = require('./models/tables')
 
 
-app.engine('handlebars', handlebars( {defaultLayout: 'main'}));
+// app.engine('handlebars', handlebars( {defaultLayout: 'main'}));
+app.engine('handlebars', handlebars( {
+    defaultLayout: 'main',
+    partialsDir: __dirname + '/views/layouts/',
+}));
+
 app.set('view engine', 'handlebars');
-app.set('port', process.env.PORT || port)
+app.set('port', process.env.PORT || port);
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
@@ -20,7 +25,7 @@ app.get('/', function(req, res){
 
 // Read
 app.get('/read', async (req, res) =>{
-    res.send("Foi")
+    res.send("foi")
 })
 
 // View Create
