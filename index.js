@@ -41,8 +41,7 @@ app.post('/update', async (req, res) =>{
 
 })
 
-// porta para hospedagem no vercel
-app.listen(process.env.PORT || port, function(){
+app.listen(port, function(){
     console.log('Servidor Ligado');
-    console.log('http://localhost:' + (process.env.PORT || port));
+    console.log('http://localhost:' + port);
 })
