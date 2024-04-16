@@ -8,8 +8,6 @@ const port = 4000
 const exphbs = require("express-handlebars");
 const path = require("path");
 
-app.use(express.static(__dirname + '../../' + '/public'));
-
 app.engine("handlebars", exphbs.engine({
     defaultLayout: "main",
     layoutsDir: path.join(__dirname, "views", "layouts")
@@ -17,25 +15,17 @@ app.engine("handlebars", exphbs.engine({
 app.set("view engine", "handlebars");
 app.set("views", path.join(__dirname, "views"));
 
+// servidor
+app.listen(process.env.PORT || port, function(){
+    console.log('Servidor Ligado');
+    console.log('http://localhost:' + port);
+})
 
-app.listen(5000, () => {
-    console.log("Server is running on port 5000!");
-});
-
-
-
-
-// app.engine('handlebars', handlebars( {defaultLayout: 'main'}));
-// app.engine('handlebars', handlebars( {
-//     defaultLayout: 'main',
-//     partialsDir: __dirname + '/views/layouts/',
-// }));
-
-// app.set('view engine', 'handlebars');
-// app.set('port', process.env.PORT || port);
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
+
+// ROTAS
 
 // index
 app.get('/', function(req, res){
@@ -64,9 +54,4 @@ app.post('/save', function(req, res){
 
 app.post('/update', async (req, res) =>{
 
-})
-
-app.listen(process.env.PORT || port, function(){
-    console.log('Servidor Ligado');
-    console.log('http://localhost:' + port);
 })
