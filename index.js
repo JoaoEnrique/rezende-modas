@@ -2,13 +2,13 @@ const express = require('express')
 const app = express()
 const handlebars = require('express-handlebars').engine
 const bodyParser = require('body-parser')
-const port = 3000
+const port = 4000
 // const tables = require('./models/tables')
 
 
 app.engine('handlebars', handlebars( {defaultLayout: 'main'}));
-
 app.set('view engine', 'handlebars');
+app.set('port', process.env.PORT || port)
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
@@ -41,7 +41,7 @@ app.post('/update', async (req, res) =>{
 
 })
 
-app.listen(port, function(){
+app.listen(process.env.PORT || port, function(){
     console.log('Servidor Ligado');
     console.log('http://localhost:' + port);
 })
