@@ -5,15 +5,34 @@ const bodyParser = require('body-parser')
 const port = 4000
 // const tables = require('./models/tables')
 
+const exphbs = require("express-handlebars");
+const path = require("path");
+
+app.use(express.static(__dirname + '../../' + '/public'));
+
+app.engine("handlebars", exphbs.engine({
+    defaultLayout: "main",
+    layoutsDir: path.join(__dirname, "views", "layouts")
+}));
+app.set("view engine", "handlebars");
+app.set("views", path.join(__dirname, "views"));
+
+
+app.listen(5000, () => {
+    console.log("Server is running on port 5000!");
+});
+
+
+
 
 // app.engine('handlebars', handlebars( {defaultLayout: 'main'}));
-app.engine('handlebars', handlebars( {
-    defaultLayout: 'main',
-    partialsDir: __dirname + '/views/layouts/',
-}));
+// app.engine('handlebars', handlebars( {
+//     defaultLayout: 'main',
+//     partialsDir: __dirname + '/views/layouts/',
+// }));
 
-app.set('view engine', 'handlebars');
-app.set('port', process.env.PORT || port);
+// app.set('view engine', 'handlebars');
+// app.set('port', process.env.PORT || port);
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
