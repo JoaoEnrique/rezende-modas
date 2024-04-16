@@ -25,7 +25,9 @@ git commit -m "commit"
 git push origin seu-nome
 ```
 
-Se tiver finalizado uma funcionalidade inteira, tranfira as alteracoes para a branch de homologação com pull request.
+# Pull request
+Se tiver finalizado uma funcionalidade inteira, tranfira as alteracoes para a branch de homologação com pull request.<br><br>
+OBS: apenas o QA transfere da homologação para main
 
 Clique em "pull request" no menu ou em Compare & pull request
 ![alt text](image.png)
