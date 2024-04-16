@@ -25,6 +25,22 @@ git commit -m "commit"
 git push origin seu-nome
 ```
 
-Se tiver finalizado uma funcionalidade inteira, tranfira as alteracoes para a branch de homologação com pull request
+Se tiver finalizado uma funcionalidade inteira, tranfira as alteracoes para a branch de homologação com pull request.
 
+Clique em "pull request" no menu ou em Compare & pull request
 ![alt text](image.png)
+
+Clique em New "pull request" ou em "Compara & pull reques"
+![alt text](image-1.png)
+
+Selecione primeiro a branch "homologação" e depois a com o seu nome
+![alt text](image-2.png)
+
+Clique no botao "create pull request"
+![alt text](image-3.png)
+
+Clique no botao "merge pull request"
+![alt text](image-4.png)
+
+Pronto! Agora você fez um pull request e suas alterações foram enviadas para a homologação
+![alt text](image-5.png)
