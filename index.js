@@ -20,6 +20,7 @@ app.get('/', function(req, res){
 
 // Read
 app.get('/read', async (req, res) =>{
+    res.send("Foi")
 })
 
 // View Create
