@@ -5,10 +5,7 @@ const handlebars = require('express-handlebars').engine
 const bodyParser = require('body-parser')
 const port = 4000
 const tables = require('./models/tables')
-const Products = tables.Products
-const Employees = tables.Employees
-const SaleItems = tables.SaleItems
-const Sales = tables.Sales
+const { Products, Employees, SaleItems, Sales } = tables
 
 const exphbs = require("express-handlebars");
 const path = require("path");
@@ -20,7 +17,7 @@ app.engine("handlebars", exphbs.engine({
 app.set("view engine", "handlebars");
 app.set("views", path.join(__dirname, "views"));
 
-// servidor
+// Servidor
 app.listen(process.env.PORT || port, function(){
     console.log('Servidor Ligado');
     console.log('http://localhost:' + port);
