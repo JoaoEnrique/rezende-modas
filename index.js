@@ -4,11 +4,11 @@ const app = express()
 const handlebars = require('express-handlebars').engine
 const bodyParser = require('body-parser')
 const port = 4000
-const tables = require('./models/tables')
-const Products = tables.Products
-const Employees = tables.Employees
-const SaleItems = tables.SaleItems
-const Sales = tables.Sales
+// const tables = require('./models/tables')
+// const Products = tables.Products
+// const Employees = tables.Employees
+// const SaleItems = tables.SaleItems
+// const Sales = tables.Sales
 
 const exphbs = require("express-handlebars");
 const path = require("path");
