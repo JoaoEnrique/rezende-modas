@@ -1,4 +1,6 @@
 # Rezendes moda
+link: https://rezende-modas.vercel.app/ <br>
+OBS: o link pega os arquivos da branch main.
 
 # Para usar
 
@@ -30,19 +32,19 @@ Se tiver finalizado uma funcionalidade inteira, tranfira as alteracoes para a br
 OBS: apenas o QA transfere da homologação para main
 
 Clique em "pull request" no menu ou em Compare & pull request
-![alt text](image.png)
+![alt text](readme-images/image.png)
 
 Clique em New "pull request" ou em "Compara & pull reques"
-![alt text](image-1.png)
+![alt text](readme-images/image-1.png)
 
 Selecione primeiro a branch "homologação" e depois a com o seu nome
-![alt text](image-2.png)
+![alt text](readme-images/image-2.png)
 
 Clique no botao "create pull request"
-![alt text](image-3.png)
+![alt text](readme-images/image-3.png)
 
 Clique no botao "merge pull request"
-![alt text](image-4.png)
+![alt text](readme-images/image-4.png)
 
 Pronto! Agora você fez um pull request e suas alterações foram enviadas para a homologação
-![alt text](image-5.png)
+![alt text](readme-images/image-5.png)
