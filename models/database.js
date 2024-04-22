@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
-const sequelize = new Sequelize('q4ds0zcv2qywzdu0', 'fp8llaifvcdi63in', 'tfvo7zaj7ksza9e1', {
-    host: 'otwsl2e23jrxcqvx.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, process.env.DB_PASSWORD, {
+    host: process.env.DB_HOST,
     dialect: 'mysql'
 })
 
