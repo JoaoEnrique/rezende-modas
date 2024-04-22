@@ -4,7 +4,7 @@ const app = express()
 const handlebars = require('express-handlebars').engine
 const bodyParser = require('body-parser')
 const port = 4000
-const tables = require('./models/tables')
+const tables = require('../models/tables')
 const { Products, Employees, SaleItems, Sales } = tables
 
 const exphbs = require("express-handlebars");
@@ -22,7 +22,6 @@ app.listen(process.env.PORT || port, function(){
     console.log('Servidor Ligado');
     console.log('http://localhost:' + port);
 })
-
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
