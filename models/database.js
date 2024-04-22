@@ -1,9 +1,15 @@
-const { Pool } = require('pg')
-require('dotenv').config()
+const { Sequelize, DataTypes } = require('sequelize');
+require('dotenv').config();
 
-const pool = new Pool({
-  connectionString: "postgres://default:xVqFA8PYp1ro@ep-lingering-tree-465388-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require",
-})
+const sequelize = new Sequelize(process.env.POSTGRES_URL, {
+  dialect: 'postgres',
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false // dependendo das configurações do seu banco de dados
+    }
+  }
+});
 
 module.exports = {
     Sequelize: Sequelize,
