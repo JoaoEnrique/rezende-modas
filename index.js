@@ -4,11 +4,11 @@ const app = express()
 const handlebars = require('express-handlebars').engine
 const bodyParser = require('body-parser')
 const port = 4000
-// const tables = require('./models/tables')
-// const Products = tables.Products
-// const Employees = tables.Employees
-// const SaleItems = tables.SaleItems
-// const Sales = tables.Sales
+const tables = require('./models/tables')
+const Products = tables.Products
+const Employees = tables.Employees
+const SaleItems = tables.SaleItems
+const Sales = tables.Sales
 
 const exphbs = require("express-handlebars");
 const path = require("path");
@@ -86,13 +86,22 @@ app.get('/api/sales', function(req, res){
 })
 
 // Item da Venda
-app.get('/api/saleIitems/:saleId', function(req, res){
-    const id = req.params.id;
-
+app.get('/api/saleIitems', function(req, res){
     const result = SaleItems.findAll().then(result => {
         res.json(result);
     })
 
+    .catch(err => {
+        console.error('Erro ao buscar produtos:', err);
+        res.status(500).json({ error: 'Erro ao buscar produtos' });
+    });
+})
+
+// Vendas
+app.get('/api/employee', function(req, res){
+    const result = Employees.findAll().then(result => {
+        res.json(result);
+    })
     .catch(err => {
         console.error('Erro ao buscar produtos:', err);
         res.status(500).json({ error: 'Erro ao buscar produtos' });
