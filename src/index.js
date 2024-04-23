@@ -3,8 +3,6 @@ const express = require('express');
 const app = express();
 const viewsRouter = require('./routes/views');
 const apiRouter = require('./routes/api');
-const handlebars = require('express-handlebars').engine;
-const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
 
 // Config handlebars
