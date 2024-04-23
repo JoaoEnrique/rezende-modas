@@ -5,7 +5,7 @@ const viewsRouter = require('./routes/views');
 const apiRouter = require('./routes/api');
 const handlebars = require('express-handlebars').engine;
 const bodyParser = require('body-parser');
-const port = 4000;
+const PORT = process.env.PORT || 3000;
 
 // Config handlebars
 const exphbs = require('express-handlebars');
@@ -19,9 +19,9 @@ app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, "views"));
 
 // Servidor
-app.listen(process.env.PORT || port, function(){
+app.listen(PORT, function(){
     console.log('Servidor Ligado');
-    console.log('http://localhost:' + port);
+    console.log('http://localhost:' + PORT);
 })
 
 // Views
