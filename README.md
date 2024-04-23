@@ -1,5 +1,5 @@
 # Rezendes moda
-link: https://rezende-modas.vercel.app/ <br>
+link: https://rezendes-modas.onrender.com/ <br>
 OBS: o link pega os arquivos da branch main.
 
 # Para usar
