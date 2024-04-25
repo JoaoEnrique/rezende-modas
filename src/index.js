@@ -2,7 +2,10 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const viewsRouter = require('./routes/views');
-const apiRouter = require('./routes/api');
+const productsRouter = require('./routes/api/products/routes');
+const salesRouter = require('./routes/api/sales/routes');
+const saleItemsRouter = require('./routes/api/saleItems/routes');
+const employeesRouter = require('./routes/api/employee/routes');
 const PORT = process.env.PORT || 3000;
 
 // Config handlebars
@@ -26,4 +29,16 @@ app.listen(PORT, function(){
 app.use(viewsRouter);
 
 // API
-app.use(apiRouter);
+
+/* TODO
+    * Manter produto X
+    * Manter vendas
+    * Manter item de vendas
+    * Editar funcionário
+    * Listar funcionário
+    * Fazer login
+*/
+app.use(productsRouter);
+app.use(salesRouter);
+app.use(saleItemsRouter);
+app.use(employeesRouter);
