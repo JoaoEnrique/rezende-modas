@@ -37,15 +37,98 @@ router.get('/api/products', async (req, res) => {
 });
 
 router.post('/api/products', async (req, res) => {
+    // Data provided by a HTML form
+    const {
+        reference,
+        type,
+        quantity,
+        price
+    } = req.body;
 
+    // Insert a product into database
+    try {
+        const product = await Products.create({
+            reference,
+            type,
+            quantity,
+            price
+        });
+
+        res.status(201).json({
+            msg: "Produto cadastrado",
+            product
+        });
+    } catch(err) {
+        res.status(500).json({
+            msg: "Erro ao cadastrar produto",
+            err
+        });
+    }
 });
 
-router.put('/api/products', async (req, res) => {
+router.put('/api/products', async(req, res) => {
+    // Update product fields
+    try {
+        // Get product id
+        let id = parseInt(req.query.id) || parseInt(req.body.id);
+    
+        // Get product data
+        const {
+            reference,
+            type,
+            quantity,
+            price
+        } = req.body;
 
-});
+        // Update product
+        const product = await Products.update(
+            {
+                reference,
+                type,
+                quantity,
+                price: price.toFixed(2)
+            },
+            {
+                where: {
+                    id
+                }
+            }
+        );
+
+        res.status(201).json({
+            msg: "Produto atualizado",
+            product
+        });
+    } catch(err) {
+        res.status(500).json({
+            msg: 'Erro ao atualizar produto',
+            err
+        });
+    }
+})
 
 router.delete('/api/products', async (req, res) => {
+    try {
+        // Get product id
+        let id = parseInt(req.query.id);
 
+        // Remove product by ID
+        const removedProduct = Products.destroy({
+            where: {
+                id
+            }
+        });
+
+        res.status(204).json({
+            msg: 'Produto removido',
+            removedProduct
+        })
+    } catch(err) {
+        res.status(500).json({
+            msg: 'Erro ao remover produto',
+            err
+        });
+    }
 });
 
 // Vendas
