@@ -17,6 +17,25 @@ router.get('/api/products', async (req, res) => {
     }
 });
 
+
+router.get('/api/products/:id', async (req, res) => {
+    try {
+        const productId = req.params.id;
+        const product = await Products.findByPk(productId);
+        if (product) {
+            res.json(product);
+        } else {
+            res.status(404).json({ msg: 'Produto não encontrado' });
+        }
+    } catch(err) {
+        res.status(500).json({
+            msg: "Erro ao buscar produto por ID",
+            err
+        });
+    }
+});
+
+
 router.post('/api/products', async (req, res) => {
     // Data provided by HTML form
     const {
