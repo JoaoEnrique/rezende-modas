@@ -6,6 +6,7 @@ const productsRouter = require('./routes/api/products/routes');
 const salesRouter = require('./routes/api/sales/routes');
 const saleItemsRouter = require('./routes/api/saleItems/routes');
 const employeesRouter = require('./routes/api/employee/routes');
+const loginRouter = require('./routes/api/login');
 const PORT = process.env.PORT || 3000;
 
 // Config handlebars
@@ -44,3 +45,4 @@ app.use(productsRouter);
 app.use(salesRouter);
 app.use(saleItemsRouter);
 app.use(employeesRouter);
+app.use(loginRouter);
