@@ -18,12 +18,12 @@ router.get('/api/sales', async (req, res) => {
 });
 
 router.post('/api/sales', async (req, res) => {
-    // Data provided by HTML form
+    // Dados vindos do formulário HTML
     const {
         total
     } = req.body;
 
-    // Insert a sale into database
+    // Cadastro de uma venda no banco
     try {
         const newSale = await Sales.create({
             total: parseInt(total)
@@ -42,17 +42,17 @@ router.post('/api/sales', async (req, res) => {
 });
 
 router.put('/api/sales', async (req, res) => {
-    // Update sale fields
+    // Atualizar campos da venda
     try {
-        // Get sale id
+        // ID da venda
         let id = parseInt(req.query.id) || parseInt(req.body.id);
     
-        // Get sale data
+        // Dados da venda
         const {
             total
         } = req.body;
 
-        // Update sale
+        // Atualizar campo da venda através do ID
         const updatedSale = await Sales.update(
             {
                 total: parseInt(total)
@@ -78,10 +78,10 @@ router.put('/api/sales', async (req, res) => {
 
 router.delete('/api/sales', async (req, res) => {
     try {
-        // Get sale id
+        // ID da venda
         let id = parseInt(req.query.id);
 
-        // Remove sale by ID
+        // Remover a venda através do ID
         const removedSale = await Sales.destroy({
             where: {
                 id

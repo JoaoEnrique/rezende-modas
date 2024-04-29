@@ -53,7 +53,6 @@ router.get('/products/edit/:id', function(req, res){
     res.render('products/edit', { title: 'Editar Produto' })
 })
 
-
 // Catalogo
 router.get('/catalogs/masculine', function(req, res){
     res.render('catalogs/masculine', { title: 'Catálogo Masculino' })
@@ -62,7 +61,6 @@ router.get('/catalogs/masculine', function(req, res){
 router.get('/catalogs/feminine', function(req, res){
     res.render('catalogs/feminine', { title: 'Catálogo Feminino' })
 })
-
 
 // Vendas
 router.get('/sales', function(req, res){
@@ -131,7 +129,5 @@ router.post('/sales/create', async (req, res) => {
         res.redirect('sales/register');
     }
 });
-
-
 
 module.exports = router

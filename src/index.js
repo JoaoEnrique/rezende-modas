@@ -34,7 +34,7 @@ app.use(viewsRouter);
 
 /* TODO
     * Manter produto X
-    * Manter vendas
+    * Manter vendas X
     * Manter item de vendas
     * Editar funcionário
     * Listar funcionário
