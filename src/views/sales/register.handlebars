@@ -1,0 +1,33 @@
+
+<div class="w-screen bg-gray-background flex items-center justify-center" style="min-height: calc(100vh - 74px);">
+
+    <div class="p-4 w-50 rounded-md flex items-center flex-col shadow-lg gap-y-2.5 bg-white" style="max-width: 1000px;">
+        
+        <form action="/sales/create" method="post">
+            <label for="">Nome do Produto</label>
+            <select placeholder="000" id="selct-product" class="input-facebook">
+                <option selected disabled value="">Produto</option>
+                {{#each products}}
+                    <option value="{{this.id}}">{{this.reference}}</option>
+                {{/each}}
+            </select>
+
+
+            <div id="list-products" style="width: 100%;">
+
+            </div>
+
+            <div class="grid grid-cols-10 gap-4">
+                <div class="col-span-2">
+                    <label for="total">Total</label>
+                    <input type="text" name="total" id="total" class="input-facebook" value="0" required>
+                </div>
+            </div>
+            <hr class="w-full m-4 border-gray-300 border">
+            <button type="submit" class="h-12 w-full bg-red-800 rounded-md text-white"><a href="#">Cadastrar Venda</a></button>
+        </form>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+</div>
