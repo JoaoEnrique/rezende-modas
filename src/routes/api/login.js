@@ -51,10 +51,11 @@ router.post('/api/login', async (req, res) => {
                     token
                 });
             }
+        } else {
+            res.status(400).json("Usuário ou senha incorretos");
         }
-
-        res.status(400).json("Usuário ou senha incorretos");
     } catch(err) {
+        console.log(err);
         res.status(500).json({
             msg: "Erro ao fazer login",
             err

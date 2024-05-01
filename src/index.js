@@ -39,7 +39,8 @@ app.use(viewsRouter);
     * Manter item de vendas
     * Editar funcionário
     * Listar funcionário
-    * Fazer login
+    * Fazer login X
+    * Integração com o front
 */
 app.use(productsRouter);
 app.use(salesRouter);
