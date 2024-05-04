@@ -17,5 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const  { token } = await loginResponse.json();
 
         Cookies.set("token", `${token}`, { expires: 7 });
+        location.replace('/');
     })
 })
