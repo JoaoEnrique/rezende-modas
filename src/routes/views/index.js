@@ -1,19 +1,23 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
+
 const router = express.Router();
 
-
+router.use(cookieParser());
 
 router.get('/', (req, res) => {
-    res.render('index', { title: 'Home - Rezendes moda' })
-})
-
-router.get('/login', (req, res) => {
-    const { token } = req.cookies;
-
+    const { token } = req.cookies
+    
     if (token) {
-        res.status(301).redirect('/');
+        const userInfo = jwt.verify(token, process.env.TOKEN_SECRET);
+        res.render('index', { 
+            title: 'Home - Rezendes moda',
+            name: userInfo.nome,
+            email: userInfo.email
+        })
     } else {
-        res.render('login', { title: 'Login' });
+        res.render('index', { title: 'Home - Rezendes moda'  })
     }
 })
 
