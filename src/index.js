@@ -1,9 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-
-app.use(express.static('src'));
-app.use(express.urlencoded({ extended: true }));
+const path = require('path');
 
 // Views routers
 const employeesViewsRouter = require('./routes/views/employees');
@@ -11,6 +9,7 @@ const productsViewsRouter = require('./routes/views/products');
 const salesViewsRouter = require('./routes/views/sales');
 const catalogsViewsRouter = require('./routes/views/catalogs');
 const homeViewsRouter = require('./routes/views/index');
+const loginViewsRouter = require('./routes/views/login');
 
 // API routers
 const productsRouter = require('./routes/api/products/routes');
@@ -23,8 +22,6 @@ const PORT = process.env.PORT || 3000;
 
 // Config handlebars
 const exphbs = require('express-handlebars');
-const path = require('path');
-
 app.engine('handlebars', exphbs.engine({
     defaultLayout: "main",
     layoutsDir: path.join(__dirname, "views", "layouts"),
@@ -34,8 +31,11 @@ app.engine('handlebars', exphbs.engine({
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, "views"));
 
-// Servidor
-app.listen(PORT, function(){
+app.use(express.static('src'));
+app.use(express.urlencoded({ extended: true }));
+
+// Inicialização do servidor
+app.listen(PORT, () => {
     console.log('Servidor Ligado');
     console.log('http://localhost:' + PORT);
 })
@@ -46,6 +46,7 @@ app.use(employeesViewsRouter);
 app.use(productsViewsRouter);
 app.use(salesViewsRouter);
 app.use(catalogsViewsRouter);
+app.use(loginViewsRouter);
 
 // API
 
