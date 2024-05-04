@@ -7,6 +7,11 @@
         <a href="/employees" class="text-gray-600 hover:text-gray-900 mr-4">Funcionários</a>
         <a href="/products" class="text-gray-600 hover:text-gray-900 mr-4">Produtos</a>
         <a href="/sales" class="text-gray-600 hover:text-gray-900 mr-4">Vendas</a>
-        <a href="/login" class="text-gray-600 hover:text-gray-900 mr-4">Login</a>
+        
+        {{#if name}}
+            <span class="text-white bg-red-500 py-1 px-2 rounded mr-4">{{name}}</span>
+        {{else}}
+            <a href="/login" class="text-gray-600 hover:text-gray-900 mr-4">Login</a>
+        {{/if}}
     </div>
-</div> 
+</div>
