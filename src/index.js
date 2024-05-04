@@ -1,12 +1,24 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const viewsRouter = require('./routes/views');
+
+app.use(express.static('src'));
+app.use(express.urlencoded({ extended: true }));
+
+// Views routers
+const employeesViewsRouter = require('./routes/views/employees');
+const productsViewsRouter = require('./routes/views/products');
+const salesViewsRouter = require('./routes/views/sales');
+const catalogsViewsRouter = require('./routes/views/catalogs');
+const homeViewsRouter = require('./routes/views/index');
+
+// API routers
 const productsRouter = require('./routes/api/products/routes');
 const salesRouter = require('./routes/api/sales/routes');
 const saleItemsRouter = require('./routes/api/saleItems/routes');
 const employeesRouter = require('./routes/api/employee/routes');
 const loginRouter = require('./routes/api/login');
+
 const PORT = process.env.PORT || 3000;
 
 // Config handlebars
@@ -29,7 +41,11 @@ app.listen(PORT, function(){
 })
 
 // Views
-app.use(viewsRouter);
+app.use(homeViewsRouter);
+app.use(employeesViewsRouter);
+app.use(productsViewsRouter);
+app.use(salesViewsRouter);
+app.use(catalogsViewsRouter);
 
 // API
 
