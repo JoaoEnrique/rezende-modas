@@ -2,14 +2,29 @@ const express = require('express');
 const auth = require('../../../middlewares/auth');
 
 const router = express.Router();
-router.use(auth);
 
-router.get('/catalogs/masculine', (req, res) => {
-    res.render('catalogs/masculine', { title: 'Catálogo Masculino' })
+router.get('/catalogs/masculine', auth, (req, res) => {
+    const { formattedURL } = req;
+    const { userInfo } = req;
+
+    res.render(formattedURL, {
+        title: 'Catálogo Masculino',
+        name: userInfo.nome,
+        email: userInfo.email
+    })
 })
 
-router.get('/catalogs/feminine', (req, res) => {
-    res.render('catalogs/feminine', { title: 'Catálogo Feminino' })
+router.get('/catalogs/feminine', auth, (req, res) => {
+    const { formattedURL } = req;
+    const { userInfo } = req;
+
+    console.log(userInfo)
+
+    res.render(formattedURL, {
+        title: 'Catálogo Feminino',
+        name: userInfo.nome,
+        email: userInfo.email
+    })
 })
 
 module.exports = router;

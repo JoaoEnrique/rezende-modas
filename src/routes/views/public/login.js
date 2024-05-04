@@ -1,6 +1,6 @@
 const express = require('express');
 
-const router = express.Router();
+const router = express.Router(); 
 
 router.get('/login', (req, res) => {
     const { token } = req.cookies;

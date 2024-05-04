@@ -3,21 +3,15 @@ const auth = require('../../../middlewares/auth');
 
 const router = express.Router();
 
-router.get('/employees', auth, (req, res) => {
+router.get('/', auth, (req, res) => {
     const { formattedURL } = req;
     const { userInfo } = req;
 
     res.render(formattedURL, {
-        title: 'Funcionários',
+        title: 'Home - Rezende modas',
         name: userInfo.nome,
         email: userInfo.email
     })
-});
+})
 
-router.get('/employees/list');
-
-router.get('/employees/register');
-
-router.get('/employees/edit');
-
-module.exports = router;
+module.exports = router

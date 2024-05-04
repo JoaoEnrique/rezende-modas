@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Employees } = require('../../../../models/tables');
+const { Employees } = require('../../../models/tables');
 
 router.get('/api/employee', async (req, res) => {
     return res.json("HAHA");

@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 const { Employees } = require('../../../models/tables');
 const jwt = require('jsonwebtoken');
-const dotenv = require('dotenv').config();
+
+router.use(express.urlencoded({ extended: false }));
+router.use(express.json());
 
 // Essa rota apenas recebe um token JWT, verifica se ele é válido e retorna as informações do usuário
 router.get('/api/login', async (req, res) => {
@@ -50,6 +52,8 @@ router.post('/api/login', async (req, res) => {
                     msg: `Bem-vindo, ${employee.name}!`,
                     token
                 });
+            } else {
+                res.status(400).json("Usuário ou senha incorretos");
             }
         } else {
             res.status(400).json("Usuário ou senha incorretos");

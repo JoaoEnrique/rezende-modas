@@ -1,10 +1,18 @@
 const express = require('express');
-const jwt = require('jsonwebtoken');
 const auth = require('../../../middlewares/auth');
 
 const router = express.Router();
 
-router.get('/sales',)
+router.get('/sales', auth, (req, res) => {
+    const { formattedURL } = req;
+    const { userInfo } = req;
+
+    res.render(formattedURL, {
+        title: 'Vendas',
+        name: userInfo.nome,
+        email: userInfo.email
+    })
+})
 
 router.get('/sales/list',);
 

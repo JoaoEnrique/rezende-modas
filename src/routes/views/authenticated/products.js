@@ -2,9 +2,17 @@ const express = require('express');
 const auth = require('../../../middlewares/auth');
 
 const router = express.Router();
-router.use(auth);
 
-router.get('/products');
+router.get('/products', auth, (req, res) => {
+    const { formattedURL } = req;
+    const { userInfo } = req;
+
+    res.render(formattedURL, {
+        title: 'Produtos',
+        name: userInfo.nome,
+        email: userInfo.email
+    })
+});
 
 router.get('/products/list');
 

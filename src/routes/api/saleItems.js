@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { SaleItems } = require('../../../../models/tables');
+const { SaleItems } = require('../../../models/tables');
 
 router.get('/api/saleItems', async (req, res) => {
     try {

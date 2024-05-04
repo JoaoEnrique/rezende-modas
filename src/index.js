@@ -1,21 +1,25 @@
 require('dotenv').config();
+const cookieParser = require('cookie-parser');
 const express = require('express');
 const app = express();
 const path = require('path');
+require('dotenv').config();
+
+app.use(cookieParser());
 
 // Views routers
-const homeViewsRouter = require('./routes/views/public/index');
-const loginViewsRouter = require('./routes/views/public/login');
-const employeesViewsRouter = require('./routes/views/authenticated/employees');
-const productsViewsRouter = require('./routes/views/authenticated/products');
-const salesViewsRouter = require('./routes/views/authenticated/sales');
-const catalogsViewsRouter = require('./routes/views/authenticated/catalogs');
+const homeViewsRouter = require('./routes/views/public/home'); // X 
+const loginViewsRouter = require('./routes/views/public/login'); // X
+const employeesViewsRouter = require('./routes/views/authenticated/employees'); // X
+const productsViewsRouter = require('./routes/views/authenticated/products'); // X
+const salesViewsRouter = require('./routes/views/authenticated/sales'); // X
+const catalogsViewsRouter = require('./routes/views/authenticated/catalogs'); // X
 
 // API routers
-const productsRouter = require('./routes/api/products/routes');
-const salesRouter = require('./routes/api/sales/routes');
-const saleItemsRouter = require('./routes/api/saleItems/routes');
-const employeesRouter = require('./routes/api/employee/routes');
+// const productsRouter = require('./routes/api/products');
+// const salesRouter = require('./routes/api/sales');
+// const saleItemsRouter = require('./routes/api/saleItems');
+// const employeesRouter = require('./routes/api/employees');
 const loginRouter = require('./routes/api/login');
 
 const PORT = process.env.PORT || 3000;
@@ -42,9 +46,9 @@ app.listen(PORT, () => {
 })
 
 // Views
-app.use(homeViewsRouter);
-app.use(loginViewsRouter);
-app.use(employeesViewsRouter);
+app.use(homeViewsRouter); // X
+app.use(loginViewsRouter); // X
+app.use(employeesViewsRouter); // X
 app.use(productsViewsRouter);
 app.use(salesViewsRouter);
 app.use(catalogsViewsRouter);
@@ -60,8 +64,8 @@ app.use(catalogsViewsRouter);
     * Fazer login X
     * Integração com o front
 */
-app.use(productsRouter);
-app.use(salesRouter);
-app.use(saleItemsRouter);
-app.use(employeesRouter);
-app.use(loginRouter);
+// app.use(productsRouter);
+// app.use(salesRouter);
+// app.use(saleItemsRouter);
+// app.use(employeesRouter);
+app.use(loginRouter); // X
