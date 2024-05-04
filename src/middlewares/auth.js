@@ -1,22 +1,23 @@
 const formatURL = require('../utils/formatURL');
 const jwt = require('jsonwebtoken');
 
-const auth = (title) => {
-    return (req, res, next) => {
-        const { token } = req.cookies;
-        const url = formatURL(req.url);
+const auth = (req, res, next) => {
+    const { token } = req.cookies;
 
-        if (token) {
-            const userInfo = jwt.verify(token, process.env.TOKEN_SECRET);
-            res.render(url, {
-                title,
-                name: userInfo.nome,
-                email: userInfo.email
-            });
-        } else {
-            res.status(301).redirect('/login');
-        }
-    };
+    if (!token) {
+        // Se não houver token, redireciona para o login
+        return res.status(301).redirect('/login');
+    }
+
+    try {
+        // Tenta verificar o token
+        req.userInfo = jwt.verify(token, process.env.TOKEN_SECRET);
+        req.formattedURL = formatURL(req.url);
+        next();
+    } catch (error) {
+        // Retorna um erro caso o token esteja inválido ou expirado
+        return res.status(401).json({ error: "Token inválido ou expirado" });
+    }
 };
 
 module.exports = auth;

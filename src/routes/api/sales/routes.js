@@ -2,9 +2,6 @@ const express = require('express');
 const router = express.Router();
 const { Sales } = require('../../../../models/tables');
 
-router.use(express.json());
-router.use(express.urlencoded({ extended: false }));
-
 router.get('/api/sales', async (req, res) => {
     try {
         const sales = await Sales.findAll();

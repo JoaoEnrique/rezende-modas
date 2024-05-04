@@ -1,16 +1,16 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const auth = require('../../middlewares/auth');
+const auth = require('../../../middlewares/auth');
 
 const router = express.Router();
 
-router.get('/sales', auth('Vendas'))
+router.get('/sales',)
 
-router.get('/sales/list', auth('Listar vendas'));
+router.get('/sales/list',);
 
-router.get('/sales/register', auth('Cadastrar venda'))
+router.get('/sales/register',)
 
-router.get('/sales/edit/:id', auth('Editar venda'))
+router.get('/sales/edit/:id',)
 
 // router.post('/sales/create', auth('Listar vendas'))
 

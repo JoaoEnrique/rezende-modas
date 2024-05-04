@@ -2,9 +2,6 @@ const express = require('express');
 const router = express.Router();
 const { Products } = require('../../../../models/tables');
 
-router.use(express.json());
-router.use(express.urlencoded({ extended: false }));
-
 router.get('/api/products', async (req, res) => {
     try {
         const products = await Products.findAll();
@@ -16,7 +13,6 @@ router.get('/api/products', async (req, res) => {
         })
     }
 });
-
 
 router.get('/api/products/:id', async (req, res) => {
     try {

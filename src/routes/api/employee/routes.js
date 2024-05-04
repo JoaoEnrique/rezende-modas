@@ -2,11 +2,8 @@ const express = require('express');
 const router = express.Router();
 const { Employees } = require('../../../../models/tables');
 
-router.use(express.json());
-router.use(express.urlencoded({ extended: false }));
-
 router.get('/api/employee', async (req, res) => {
-
+    return res.json("HAHA");
 });
 
 router.post('/api/employee', async (req, res) => {

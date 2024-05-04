@@ -3,7 +3,6 @@ const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 
 const router = express.Router();
-
 router.use(cookieParser());
 
 router.get('/', (req, res) => {
