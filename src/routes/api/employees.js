@@ -68,16 +68,14 @@ router.put('/api/employees/:id', async(req, res) => {
         // Get employee data
         const {
             name,
-            email,
-            password
+            email
         } = req.body;
 
         // Update employee
         const updatedEmployee = await Employees.update(
             {
                 name,
-                email,
-                password
+                email
             },
             {
                 where: {
