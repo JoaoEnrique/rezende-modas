@@ -1,16 +1,20 @@
 const express = require('express');
-const auth = require('../../../middlewares/auth');
+const jwt = require('jsonwebtoken');
 
 const router = express.Router();
 
-router.get('/', auth, (req, res) => {
-    const { formattedURL } = req;
-    const { userInfo } = req;
+router.get('/', (req, res) => {
+    const { token } = req.cookies;
+    let userInfo = null;
 
-    res.render(formattedURL, {
+    if (token) {
+        userInfo = jwt.verify(token, process.env.TOKEN_SECRET);
+    }
+
+    res.render('index', {
         title: 'Home - Rezende modas',
-        name: userInfo.nome,
-        email: userInfo.email
+        name: userInfo?.nome,
+        email: userInfo?.email
     })
 })
 

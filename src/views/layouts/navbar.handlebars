@@ -9,7 +9,12 @@
         <a href="/sales" class="text-gray-600 hover:text-gray-900 mr-4">Vendas</a>
         
         {{#if name}}
-            <span class="text-white bg-red-500 py-1 px-2 rounded mr-4">{{name}}</span>
+        <div class="relative">
+            <button class="dropdown-button bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">{{name}}</button>
+            <div id="dropdown" class="hidden absolute z-10 top-full left-0 mt-2 bg-white rounded shadow-lg max-w-xs">
+                <button type="button" class="logout block px-4 py-2 text-gray-800 hover:bg-red-200">Sair</button>
+            </div>
+        </div>
         {{else}}
             <a href="/login" class="text-gray-600 hover:text-gray-900 mr-4">Login</a>
         {{/if}}
