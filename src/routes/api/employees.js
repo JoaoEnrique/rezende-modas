@@ -65,13 +65,13 @@ router.put('/api/employees/:id', async(req, res) => {
         // ID do funcionário
         let id = parseInt(req.params.id);
     
-        // Get employee data
+        // Dados do funcionário
         const {
             name,
             email
         } = req.body;
 
-        // Update employee
+        // Atualização do funcionário
         const updatedEmployee = await Employees.update(
             {
                 name,

@@ -4,7 +4,16 @@ const { Products } = require('../../../models/tables');
  
 router.get('/api/products', async (req, res) => {
     try {
-        const products = await Products.findAll();
+        let products = await Products.findAll();
+        products = products.map(product => {
+            const formattedPrice = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.dataValues.price);
+            
+            return {
+                ...product.dataValues,
+                price: formattedPrice
+            };
+        });
+
         res.json(products);
     } catch(err) {
         res.status(500).json({
@@ -31,10 +40,10 @@ router.get('/api/products/:id', async (req, res) => {
     }
 });
 
-
 router.post('/api/products', async (req, res) => {
     // Dados do formulário HTML
     const {
+        name,
         reference,
         type,
         quantity,
@@ -44,17 +53,18 @@ router.post('/api/products', async (req, res) => {
     // Inserção de um produto no banco
     try {
         const newProduct = await Products.create({
+            name,
             reference,
             type,
             quantity: parseInt(quantity),
-            price: price.toFixed(2)
+            price: parseFloat(price).toFixed(2)
         });
 
         res.status(201).json({
             msg: "Produto cadastrado",
-            newProduct
         });
     } catch(err) {
+        console.log(err)
         res.status(500).json({
             msg: "Erro ao cadastrar produto",
             err
@@ -62,27 +72,27 @@ router.post('/api/products', async (req, res) => {
     }
 });
 
-router.put('/api/products', async(req, res) => {
+router.put('/api/products/:id', async(req, res) => {
     // Atualização dos campos do produto
     try {
         // ID do produto
-        let id = parseInt(req.query.id) || parseInt(req.body.id);
+        let id = parseInt(req.params.id);
     
         // Dados do produto
         const {
+            name,
             reference,
-            type,
             quantity,
             price
         } = req.body;
 
         // Atualização no banco
-        const updatedProduct = await Products.update(
+        await Products.update(
             {
+                name,
                 reference,
-                type,
                 quantity: parseInt(quantity),
-                price: price.toFixed(2)
+                price: parseFloat(price).toFixed(2)
             },
             {
                 where: {
@@ -93,9 +103,9 @@ router.put('/api/products', async(req, res) => {
 
         res.status(201).json({
             msg: "Produto atualizado",
-            updatedProduct
         });
     } catch(err) {
+        console.log(err);
         res.status(500).json({
             msg: 'Erro ao atualizar produto',
             err
@@ -103,10 +113,10 @@ router.put('/api/products', async(req, res) => {
     }
 })
 
-router.delete('/api/products', async (req, res) => {
+router.delete('/api/products/:id', async (req, res) => {
     try {
         // ID do produto
-        let id = parseInt(req.query.id);
+        let id = parseInt(req.params.id);
 
         // Remoção do produto pelo seu ID
         const removedProduct = await Products.destroy({

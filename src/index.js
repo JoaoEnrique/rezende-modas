@@ -18,7 +18,7 @@ const catalogsViewsRouter = require('./routes/views/authenticated/catalogs'); //
 
 // API routers
 const employeesRouter = require('./routes/api/employees');
-// const productsRouter = require('./routes/api/products');
+const productsRouter = require('./routes/api/products');
 // const salesRouter = require('./routes/api/sales');
 // const saleItemsRouter = require('./routes/api/saleItems');
 const loginRouter = require('./routes/api/login');
@@ -60,13 +60,12 @@ app.use(catalogsViewsRouter);
     * Manter produto X
     * Manter vendas X
     * Manter item de vendas
-    * Editar funcionário
-    * Listar funcionário
+    * Manter funcionário X
     * Fazer login X
     * Integração com o front
 */
 app.use(employeesRouter);
-// app.use(productsRouter);
+app.use(productsRouter);
 // app.use(salesRouter);
 // app.use(saleItemsRouter);
 app.use(loginRouter); // X
