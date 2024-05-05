@@ -9,19 +9,19 @@ app.use(cookieParser());
 app.use(express.json());
 
 // Views routers
-const homeViewsRouter = require('./routes/views/public/home'); // X 
-const loginViewsRouter = require('./routes/views/public/login'); // X
-const employeesViewsRouter = require('./routes/views/authenticated/employees'); // X
-const productsViewsRouter = require('./routes/views/authenticated/products'); // X
-const salesViewsRouter = require('./routes/views/authenticated/sales'); // X
-const catalogsViewsRouter = require('./routes/views/authenticated/catalogs'); // X
+const homeViewsRouter = require('./routes/views/public/home');
+const loginViewsRouter = require('./routes/views/public/login');
+const employeesViewsRouter = require('./routes/views/authenticated/employees');
+const productsViewsRouter = require('./routes/views/authenticated/products');
+const salesViewsRouter = require('./routes/views/authenticated/sales');
+const catalogsViewsRouter = require('./routes/views/public/catalogs'); 
 
 // API routers
 const employeesRouter = require('./routes/api/employees');
 const productsRouter = require('./routes/api/products');
 const salesRouter = require('./routes/api/sales');
-// const saleItemsRouter = require('./routes/api/saleItems');
 const loginRouter = require('./routes/api/login');
+// const saleItemsRouter = require('./routes/api/saleItems');
 
 const PORT = process.env.PORT || 3000;
 
@@ -47,25 +47,16 @@ app.listen(PORT, () => {
 })
 
 // Views
-app.use(homeViewsRouter); // X
-app.use(loginViewsRouter); // X
-app.use(employeesViewsRouter); // X
-app.use(productsViewsRouter); //X
-app.use(salesViewsRouter);
-app.use(catalogsViewsRouter); // X
+app.use(homeViewsRouter);
+app.use(loginViewsRouter);
+app.use(employeesViewsRouter);
+app.use(productsViewsRouter);
+app.use(catalogsViewsRouter);
+// app.use(salesViewsRouter);
 
 // API
-
-/* TODO
-    * Manter produto X
-    * Manter vendas X
-    * Manter item de vendas
-    * Manter funcionário X
-    * Fazer login X
-    * Integração com o front
-*/
-app.use(employeesRouter); // X
-app.use(productsRouter); // X
+app.use(employeesRouter);
+app.use(productsRouter);
 app.use(salesRouter);
+app.use(loginRouter);
 // app.use(saleItemsRouter);
-app.use(loginRouter); // X
