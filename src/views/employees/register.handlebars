@@ -1,3 +1,4 @@
+<script src="../../js/handleAddEmployee.js"></script>
 
 <div class="w-screen bg-gray-background flex items-center justify-center" style="min-height: calc(100vh - 74px);">
     <div>
@@ -5,11 +6,13 @@
     </div>
     <div class="bg-white p-4 w-380 rounded-md flex justify-center items-center flex-col shadow-lg gap-y-2.5">
         <h3 class="title">Cadastrar Funcionário</h3>
-        <input placeholder="Digite o nome do funcionário" class="input-facebook">
-        <input placeholder="Digite seu Email" class="input-facebook">
-        <input placeholder="Digite sua senha" class="input-facebook">
-        <button class="h-12 w-full bg-red-800 rounded-md text-white">Entrar</button>
-        <hr class="w-full m-4 border-gray-300 border">
-        <a href="/login" class="cursor-pointer text-slate-500">Possui uma conta? Realize o login</a>
+        <form action="">
+            <input placeholder="Digite o nome do funcionário" class="input-facebook" name="name">
+            <input placeholder="Digite seu Email" class="input-facebook" name="email">
+            <input placeholder="Digite sua senha" class="input-facebook" name="password">
+            <button type="submit" class="h-12 w-full bg-red-800 rounded-md text-white">Cadastrar</button>
+            <hr class="w-full m-4 border-gray-300 border">
+            <a href="/login" class="cursor-pointer text-slate-500">Possui uma conta? Realize o login</a>
+        </form>
     </div>
 </div>

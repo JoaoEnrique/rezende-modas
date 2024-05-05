@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Products } = require('../../../models/tables');
-
+ 
 router.get('/api/products', async (req, res) => {
     try {
         const products = await Products.findAll();
@@ -33,7 +33,7 @@ router.get('/api/products/:id', async (req, res) => {
 
 
 router.post('/api/products', async (req, res) => {
-    // Data provided by HTML form
+    // Dados do formulário HTML
     const {
         reference,
         type,
@@ -41,7 +41,7 @@ router.post('/api/products', async (req, res) => {
         price
     } = req.body;
 
-    // Insert a product into database
+    // Inserção de um produto no banco
     try {
         const newProduct = await Products.create({
             reference,
@@ -63,12 +63,12 @@ router.post('/api/products', async (req, res) => {
 });
 
 router.put('/api/products', async(req, res) => {
-    // Update product fields
+    // Atualização dos campos do produto
     try {
-        // Get product id
+        // ID do produto
         let id = parseInt(req.query.id) || parseInt(req.body.id);
     
-        // Get product data
+        // Dados do produto
         const {
             reference,
             type,
@@ -76,7 +76,7 @@ router.put('/api/products', async(req, res) => {
             price
         } = req.body;
 
-        // Update product
+        // Atualização no banco
         const updatedProduct = await Products.update(
             {
                 reference,
@@ -105,10 +105,10 @@ router.put('/api/products', async(req, res) => {
 
 router.delete('/api/products', async (req, res) => {
     try {
-        // Get product id
+        // ID do produto
         let id = parseInt(req.query.id);
 
-        // Remove product by ID
+        // Remoção do produto pelo seu ID
         const removedProduct = await Products.destroy({
             where: {
                 id

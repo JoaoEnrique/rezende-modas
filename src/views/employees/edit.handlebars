@@ -1,10 +1,13 @@
+<script src="../../js/handleEditForm.js"></script>
+
 <div class="w-screen bg-gray-background flex items-center justify-center" style="min-height: calc(100vh - 74px);">
-    <div class="bg-white p-4 w-380 rounded-md flex justify-center items-center flex-col shadow-lg gap-y-2.5">
+    <form class="bg-white p-4 w-380 rounded-md flex justify-center items-center flex-col shadow-lg gap-y-2.5">
         <h3 class="title">Editar Funcionário</h3>
-        <input placeholder="Digite o nome do funcionário" class="input-facebook">
-        <input placeholder="Digite o email" class="input-facebook">
-        <input placeholder="Digite a senha" class="input-facebook">
-        <button class="h-12 w-full bg-red-800 rounded-md text-white">Editar</button>
+        <input type="hidden" value="{{funcionario.id}}" name="id">
+        <input placeholder="Digite o nome do funcionário" class="input-facebook" value="{{funcionario.name}}" name="name">
+        <input placeholder="Digite o email" class="input-facebook" value="{{funcionario.email}}" name="email">
+        <input placeholder="Digite a senha" class="input-facebook" value="{{funcionario.password}}" name="password">
+        <button type="submit" class="h-12 w-full bg-red-800 rounded-md text-white">Editar</button>
         <hr class="w-full m-4 border-gray-300 border">
-    </div>
+    </form>
 </div>

@@ -6,6 +6,7 @@ const path = require('path');
 require('dotenv').config();
 
 app.use(cookieParser());
+app.use(express.json());
 
 // Views routers
 const homeViewsRouter = require('./routes/views/public/home'); // X 
@@ -16,10 +17,10 @@ const salesViewsRouter = require('./routes/views/authenticated/sales'); // X
 const catalogsViewsRouter = require('./routes/views/authenticated/catalogs'); // X
 
 // API routers
+const employeesRouter = require('./routes/api/employees');
 // const productsRouter = require('./routes/api/products');
 // const salesRouter = require('./routes/api/sales');
 // const saleItemsRouter = require('./routes/api/saleItems');
-// const employeesRouter = require('./routes/api/employees');
 const loginRouter = require('./routes/api/login');
 
 const PORT = process.env.PORT || 3000;
@@ -64,8 +65,8 @@ app.use(catalogsViewsRouter);
     * Fazer login X
     * Integração com o front
 */
+app.use(employeesRouter);
 // app.use(productsRouter);
 // app.use(salesRouter);
 // app.use(saleItemsRouter);
-// app.use(employeesRouter);
 app.use(loginRouter); // X
