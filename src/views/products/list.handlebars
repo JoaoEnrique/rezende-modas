@@ -1,3 +1,4 @@
+<script src="../../js/products/handleRemoveProduct.js"></script>
 
 <div style="min-height: calc(100vh - 74px);">
     <div class=" container mx-auto p-8">
@@ -9,28 +10,28 @@
                     <tr>
                         <th class="py-2 px-4">ID</th>
                         <th class="py-2 px-4">Nome</th>
+                        <th class="py-2 px-4">Referência</th>
+                        <th class="py-2 px-4">Quantidade</th>
                         <th class="py-2 px-4">Valor</th>
                         <th class="py-2 px-4">Tipo</th>
-                        <th class="py-2 px-4">Tamanho</th>
+                        <th class="py-2 px-4">Ações</th>
                     </tr>
                 </thead>
                 <tbody class="text-gray-700">
-                
-                    <tr>
-                        <td class="border px-4 py-2">1</td>
-                        <td class="border px-4 py-2">Produto A</td>
-                        <td class="border px-4 py-2">R$ 50,00</td>
-                        <td class="border px-4 py-2">Feminino</td>
-                        <td class="border px-4 py-2">M</td>
-                    </tr>
-                    
-                    <tr>
-                        <td class="border px-4 py-2">2</td>
-                        <td class="border px-4 py-2">Produto B</td>
-                        <td class="border px-4 py-2">R$ 30,00</td>
-                        <td class="border px-4 py-2">Masculino</td>
-                        <td class="border px-4 py-2">G</td>
-                    </tr>
+                    {{#each produtos}}
+                        <tr>
+                            <td class="border px-4 py-2">{{this.id}}</td>
+                            <td class="border px-4 py-2">{{this.name}}</td>
+                            <td class="border px-4 py-2">{{this.reference}}</td>
+                            <td class="border px-4 py-2">{{this.quantity}}</td>
+                            <td class="border px-4 py-2">{{this.price}}</td>
+                            <td class="border px-4 py-2">{{this.type}}</td>
+                            <td class="border px-4 py-2">
+                                <a href="/products/edit/{{this.id}}" class="text-blue-500 hover:text-blue-700 mr-2"><i class="fas fa-edit"></i></a>
+                                <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                    {{/each}}
                 </tbody>
             </table>
         </div>

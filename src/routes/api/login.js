@@ -44,7 +44,11 @@ router.post('/api/login', async (req, res) => {
         if (employee) {
             if (employee.password === senha) {
                 // Criação do token
-                const token = jwt.sign({nome: employee.name, email}, process.env.TOKEN_SECRET, {
+                const token = jwt.sign({
+                    id: employee.id,
+                    nome: employee.name, 
+                    email,
+                }, process.env.TOKEN_SECRET, {
                     expiresIn: 60 * 60 * 24 * 7
                 });
 

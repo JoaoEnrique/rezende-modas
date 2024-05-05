@@ -1,4 +1,4 @@
-<script src="../../js/handleRemoveEmployee.js"></script>
+<script src="../../js/employee/handleRemoveEmployee.js"></script>
 
 <div style="min-height: calc(100vh - 74px);">
     <div class="container mx-auto p-8">
@@ -11,7 +11,6 @@
                         <th class="py-2 px-4">ID</th>
                         <th class="py-2 px-4">Nome</th>
                         <th class="py-2 px-4">e-mail</th>
-                        <th class="py-2 px-4">senha</th>
                         <th class="py-2 px-4">Ações</th>
                     </tr>
                 </thead>
@@ -21,7 +20,6 @@
                             <td class="border px-4 py-2">{{this.id}}</td>
                             <td class="border px-4 py-2">{{this.name}}</td>
                             <td class="border px-4 py-2">{{this.email}}</td>
-                            <td class="border px-4 py-2">{{this.password}}</td>
                             <td class="border px-4 py-2">
                                 <a href="/employees/edit/{{this.id}}" class="text-blue-500 hover:text-blue-700 mr-2"><i class="fas fa-edit"></i></a>
                                 <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash-alt"></i></button>

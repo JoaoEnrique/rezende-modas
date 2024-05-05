@@ -15,6 +15,9 @@ const Employees = db.sequelize.define('employees', {
 
 // Produtos
 const Products = db.sequelize.define('products', {
+    name: {
+        type: db.Sequelize.STRING
+    },
     reference: {
         type: db.Sequelize.STRING
     },
@@ -55,7 +58,6 @@ SaleItems.belongsTo(Products); // Um item de enda por ter um produto
 Products.hasMany(SaleItems); // um produto pode ter muitos itens de venda
 
 db.sequelize.sync();
-
 
 module.exports = {
     Employees,
