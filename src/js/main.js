@@ -20,15 +20,15 @@ function addProduct(){
 
 				<div class="col-span-2">
 					<label for="reference[${code}]">Referencia</label>
-					<input type="text" name="reference[]" id="reference[${code}]" class="input-facebook" value="${product.reference}" required>
+					<input type="text" name="reference[]" id="reference[${code}]" class="input-facebook" value="${product.reference}" required disabled>
 				</div>
 				<div class="col-span-2">
 					<label for="type[${code}]">Tipo</label>
-					<input type="text" min="1" name="type[]" id="type[${code}]" class="input-facebook" value="${product.type}" required>
+					<input type="text" min="1" name="type[]" id="type[${code}]" class="input-facebook" value="${product.type}" required disabled>
 				</div>
 				<div class="col-span-2">
 					<label for="price[${code}]">Preco</label>
-					<input maxlength="10" onkeyup="calcSubtotal()" type="text" name="price[]" id="price[${code}]" class="input-facebook" value="${product.price}"  required>
+					<input maxlength="10" onkeyup="calcSubtotal()" type="text" name="price[]" id="price[${code}]" class="input-facebook"  value="${product.price}"  required disabled>
 				</div>
 				<div class="col-span-1">
 					<label for="quantity[${code}]">Quantidade</label>
@@ -36,7 +36,7 @@ function addProduct(){
 				</div>
 				<div class="col-span-2">
 					<label for="subtotal[${code}]">Subtotal</label>
-					<input maxlength="10" onkeyup="calcSubtotal(${code})" type="text" name="subtotal[]" id="subtotal[${code}]" class="input-facebook" required>
+					<input maxlength="10" onkeyup="calcSubtotal(${code})" type="text" name="subtotal[]" id="subtotal[${code}]" class="input-facebook" required disabled>
 				</div>
 				<div class="col-span-1" style="display: contents;">
 					<button data-code="${code}" type="button" class="btn-remov-product text-red-500 hover:text-red-700">
@@ -59,7 +59,7 @@ function addProduct(){
 function calcSubtotal(code){
 	let quantity = isNaN(parseFloat($(`input[id="quantity[${code}]"]`).val())) ? 0 : parseFloat($(`input[id="quantity[${code}]"]`).val())
 	let price = isNaN(parseFloat($(`input[id="price[${code}]"]`).val())) ? 0 : parseFloat($(`input[id="price[${code}]"]`).val())
-	let subtotal = quantity * price;
+	let subtotal = (quantity * price).toFixed(2);
 
 	$(`input[id="subtotal[${code}]"]`).val(subtotal)
 	calcTotal()

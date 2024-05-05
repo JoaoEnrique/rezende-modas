@@ -1,10 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const { Sales } = require('../../../models/tables');
+const { Sales, SaleItems, Products, Employees } = require('../../../models/tables');
+const jwt = require('jsonwebtoken');
 
 router.get('/api/sales', async (req, res) => {
     try {
-        const sales = await Sales.findAll();
+        const sales = await Sales.findAll({
+            include: Employees
+        });
         res.json(sales);
     } catch(err) {
         res.status(500).json({
@@ -15,20 +18,55 @@ router.get('/api/sales', async (req, res) => {
 });
 
 router.post('/api/sales', async (req, res) => {
+    const { token } = req.cookies;
+
+    const userInfo = jwt.verify(token, process.env.TOKEN_SECRET);
+    
     // Dados vindos do formulário HTML
     const {
-        total
+        product: productId,
+        quantity: quantitySold
     } = req.body;
 
     // Cadastro de uma venda no banco
     try {
+        const product = await Products.findByPk(parseInt(productId))
+        
+        const total = (product.price * quantitySold).toFixed(2);
+
+        const employee = await Employees.findOne({
+            where: {
+                email: userInfo.email
+            }
+        })
+
         const newSale = await Sales.create({
-            total: parseInt(total)
+            total,
+            employeeId: employee.id
         });
+
+
+        await SaleItems.create({
+            quantity: quantitySold,
+            productId,
+            saleId: newSale.id
+        })
+
+        const updatedProductQuantity = product.quantity - quantitySold;
+
+        await Products.update(
+            {
+                quantity: updatedProductQuantity
+            },
+            {
+                where: {
+                    id: productId
+                }
+            }
+        )
 
         res.status(201).json({
             msg: "Venda cadastrada",
-            newSale
         });
     } catch(err) {
         res.status(500).json({

@@ -1,24 +1,88 @@
 const express = require('express');
 const auth = require('../../../middlewares/auth');
+const axios = require('axios');
 
 const router = express.Router();
 
-router.get('/sales', auth, (req, res) => {
+router.get('/sales', auth, async (req, res) => {
+    try {
+        const { formattedURL } = req;
+        const { userInfo } = req;
+        
+        const response = await axios('http://localhost:3000/api/sales');
+        const sales = response.data;
+
+        res.render(formattedURL, {
+            title: 'Vendas',
+            name: userInfo.nome,
+            email: userInfo.email,
+            vendas: sales
+        });
+    } catch(err) {
+        console.log(err);
+        res.status(500).json({
+            msg: 'Erro ao carregar vendas'
+        });
+    }
+});
+
+router.get('/sales/list', auth, async (req, res) => {
+    try {
+        const { formattedURL } = req;
+        const { userInfo } = req;
+
+        const response = await axios('http://localhost:3000/api/sales');
+        const sales = response.data;
+
+        res.render(formattedURL, {
+            title: 'Vendas',
+            name: userInfo.nome,
+            email: userInfo.email,
+            sales: sales
+        });
+    } catch(err) {
+        console.log(err);
+    }
+});
+
+router.get('/sales/register', auth, async (req, res) => {
     const { formattedURL } = req;
     const { userInfo } = req;
 
+    const response = await axios('http://localhost:3000/api/products');
+    const products = response.data;
+
     res.render(formattedURL, {
-        title: 'Vendas',
+        title: 'Registrar Venda',
         name: userInfo.nome,
-        email: userInfo.email
-    })
-})
+        email: userInfo.email,
+        products
+    });
+});
 
-router.get('/sales/list',);
+router.get('/sales/edit/:id', auth, async (req, res) => {
+    try {
+        const { userInfo } = req;
+        
+        const response = await axios.get(`http://localhost:3000/api/sales/${req.params.id}`);
+        const sale = response.data;
 
-router.get('/sales/register',)
+        res.render('sales/edit', {
+            title: 'Editar Venda',
+            name: userInfo.nome,
+            email: userInfo.email,
+            venda: sale
+        });
+    } catch(err) {
+        console.log(err);
+        res.status(500).json({
+            msg: 'Erro ao carregar venda'
+        });
+    }
+});
 
-router.get('/sales/edit/:id',)
+module.exports = router;
+
 
 // router.post('/sales/create', auth('Listar vendas'))
 

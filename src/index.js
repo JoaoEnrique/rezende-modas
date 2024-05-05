@@ -19,7 +19,7 @@ const catalogsViewsRouter = require('./routes/views/authenticated/catalogs'); //
 // API routers
 const employeesRouter = require('./routes/api/employees');
 const productsRouter = require('./routes/api/products');
-// const salesRouter = require('./routes/api/sales');
+const salesRouter = require('./routes/api/sales');
 // const saleItemsRouter = require('./routes/api/saleItems');
 const loginRouter = require('./routes/api/login');
 
@@ -50,9 +50,9 @@ app.listen(PORT, () => {
 app.use(homeViewsRouter); // X
 app.use(loginViewsRouter); // X
 app.use(employeesViewsRouter); // X
-app.use(productsViewsRouter);
+app.use(productsViewsRouter); //X
 app.use(salesViewsRouter);
-app.use(catalogsViewsRouter);
+app.use(catalogsViewsRouter); // X
 
 // API
 
@@ -64,8 +64,8 @@ app.use(catalogsViewsRouter);
     * Fazer login X
     * Integração com o front
 */
-app.use(employeesRouter);
-app.use(productsRouter);
-// app.use(salesRouter);
+app.use(employeesRouter); // X
+app.use(productsRouter); // X
+app.use(salesRouter);
 // app.use(saleItemsRouter);
 app.use(loginRouter); // X
