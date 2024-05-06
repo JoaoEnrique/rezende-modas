@@ -13,6 +13,7 @@ app.use(express.json());
 
 // Views routers
 const homeViewsRouter = require('./routes/views/public/home');
+const aboutViewsRouter = require('./routes/views/public/about');
 const loginViewsRouter = require('./routes/views/public/login');
 const employeesViewsRouter = require('./routes/views/authenticated/employees');
 const productsViewsRouter = require('./routes/views/authenticated/products');
@@ -51,6 +52,7 @@ app.listen(PORT, () => {
 
 // Views
 app.use(homeViewsRouter);
+app.use(aboutViewsRouter);
 app.use(loginViewsRouter);
 app.use(employeesViewsRouter);
 app.use(productsViewsRouter);
