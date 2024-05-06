@@ -17,7 +17,9 @@ router.get('/api/employees', async (req, res) => {
 router.get('/api/employees/:id', async (req, res) => {
     try {
         const employeeId = req.params.id;
-        const employee = await Employees.findByPk(employeeId);
+        const employee = await Employees.findByPk(employeeId, {
+            attributes: { exclude: ['password'] } // Exclui o campo de senha da consulta
+        });
         if (employee) {
             res.json(employee);
         } else {
