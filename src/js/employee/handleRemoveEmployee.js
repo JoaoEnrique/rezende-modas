@@ -1,10 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const removeButton = document.querySelectorAll("i.fa-trash-alt");
+    const removeButton = document.querySelectorAll(".btn-remove-employee");
 
     removeButton.forEach(button => {
             button.addEventListener("click", async (event) => {
-                const userEditLink = button.parentElement.previousElementSibling.href;
-                const userId = userEditLink.split("/").pop();
+                const userId = button.getAttribute("data-employee-id");
 
                 try {
                     const removeResponse = await fetch(`/api/employees/${userId}`, {
