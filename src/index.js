@@ -1,17 +1,35 @@
 require('dotenv').config();
+const cookieParser = require('cookie-parser');
 const express = require('express');
 const app = express();
-const viewsRouter = require('./routes/views');
-const productsRouter = require('./routes/api/products/routes');
-const salesRouter = require('./routes/api/sales/routes');
-const saleItemsRouter = require('./routes/api/saleItems/routes');
-const employeesRouter = require('./routes/api/employee/routes');
+const path = require('path');
+const cors = require('cors');
+require('dotenv').config();
+
+app.use(cors())
+
+app.use(cookieParser());
+app.use(express.json());
+
+// Views routers
+const homeViewsRouter = require('./routes/views/public/home');
+const loginViewsRouter = require('./routes/views/public/login');
+const employeesViewsRouter = require('./routes/views/authenticated/employees');
+const productsViewsRouter = require('./routes/views/authenticated/products');
+const salesViewsRouter = require('./routes/views/authenticated/sales');
+const catalogsViewsRouter = require('./routes/views/public/catalogs'); 
+
+// API routers
+const employeesRouter = require('./routes/api/employees');
+const productsRouter = require('./routes/api/products');
+const salesRouter = require('./routes/api/sales');
+const loginRouter = require('./routes/api/login');
+// const saleItemsRouter = require('./routes/api/saleItems');
+
 const PORT = process.env.PORT || 3000;
 
-// Config handlebars
+// Configuração do handlebars
 const exphbs = require('express-handlebars');
-const path = require('path');
-
 app.engine('handlebars', exphbs.engine({
     defaultLayout: "main",
     layoutsDir: path.join(__dirname, "views", "layouts"),
@@ -21,26 +39,27 @@ app.engine('handlebars', exphbs.engine({
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, "views"));
 
-// Servidor
-app.listen(PORT, function(){
+// Servindo arquivos estáticos
+app.use(express.static('src'));
+app.use(express.urlencoded({ extended: true }));
+
+// Inicialização do servidor
+app.listen(PORT, () => {
     console.log('Servidor Ligado');
     console.log('http://localhost:' + PORT);
 })
 
 // Views
-app.use(viewsRouter);
+app.use(homeViewsRouter);
+app.use(loginViewsRouter);
+app.use(employeesViewsRouter);
+app.use(productsViewsRouter);
+app.use(catalogsViewsRouter);
+app.use(salesViewsRouter);
 
 // API
-
-/* TODO
-    * Manter produto X
-    * Manter vendas
-    * Manter item de vendas
-    * Editar funcionário
-    * Listar funcionário
-    * Fazer login
-*/
+app.use(employeesRouter);
 app.use(productsRouter);
 app.use(salesRouter);
-app.use(saleItemsRouter);
-app.use(employeesRouter);
+app.use(loginRouter);
+// app.use(saleItemsRouter);

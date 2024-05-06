@@ -13,5 +13,7 @@
         @apply text-black text-lg;
     }
 
-   
+   body{
+    overflow-x: hidden;
+   }
 }
