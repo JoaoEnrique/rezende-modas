@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const data = Object.fromEntries(formData);
 
         try {
-            const loginResponse = await fetch("http://localhost:3000/api/login", {
+            const loginResponse = await fetch("https://rezendes-modas.onrender.com/login", {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 Cookies.set("token", `${token}`, { expires: 7 });
                 location.replace('/');
             }
-            
+
             const errorMessage = document.querySelector('.error');
             errorMessage.innerHTML = "Email ou senha incorretos"
         } catch(err) {
