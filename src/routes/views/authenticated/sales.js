@@ -27,7 +27,7 @@ router.get('/sales/list', auth, async (req, res) => {
         const { formattedURL } = req;
         const { userInfo } = req;
 
-        const response = await axios('/api/sales');
+        const response = await axios('https://rezendes-modas.onrender.com/api/sales');
         const sales = response.data;
 
         res.render(formattedURL, {
@@ -45,7 +45,7 @@ router.get('/sales/register', auth, async (req, res) => {
     const { formattedURL } = req;
     const { userInfo } = req;
 
-    const response = await axios('/api/products');
+    const response = await axios('https://rezendes-modas.onrender.com/api/products');
     const products = response.data;
 
     res.render(formattedURL, {
@@ -60,7 +60,7 @@ router.get('/sales/edit/:id', auth, async (req, res) => {
     try {
         const { userInfo } = req;
         
-        const response = await axios.get(`/api/sales/${req.params.id}`);
+        const response = await axios.get(`https://rezendes-modas.onrender.com/api/sales/${req.params.id}`);
         const sale = response.data;
 
         res.render('sales/edit', {
