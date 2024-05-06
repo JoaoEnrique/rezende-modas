@@ -14,11 +14,17 @@ document.addEventListener("DOMContentLoaded", () => {
                     'Content-type': 'application/json; charset=UTF-8',
                 }
             });
-            
+
             const  { token } = await loginResponse.json();
-    
-            Cookies.set("token", `${token}`, { expires: 7 });
-            location.replace('/');
+            
+            if (token) {
+        
+                Cookies.set("token", `${token}`, { expires: 7 });
+                location.replace('/');
+            } 
+
+            const errorElement = document.querySelector('.error')
+            errorElement.innerHTML = "Usuário ou senha incorretos"
         } catch(err) {
             console.log(err);
         }
