@@ -15,10 +15,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
             
-            const  { token } = await loginResponse.json();
-    
-            Cookies.set("token", `${token}`, { expires: 7 });
-            location.replace('/');
+            const { token } = await loginResponse.json();
+
+            if (token) {
+                Cookies.set("token", `${token}`, { expires: 7 });
+                location.replace('/');
+            }
+            
+            const errorMessage = document.querySelector('.error');
+            errorMessage.innerHTML = "Email ou senha incorretos"
         } catch(err) {
             console.log(err);
         }
