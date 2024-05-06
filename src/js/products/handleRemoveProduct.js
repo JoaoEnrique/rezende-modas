@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const userId = userEditLink.split("/").pop();
 
                 try {
-                    const removeResponse = await fetch(`http://localhost:3000/api/products/${userId}`, {
+                    const removeResponse = await fetch(`/api/products/${userId}`, {
                         method: "DELETE",
                     });
                     
