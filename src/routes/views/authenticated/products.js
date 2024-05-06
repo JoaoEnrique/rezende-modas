@@ -20,7 +20,7 @@ router.get('/products/list', auth, async (req, res) => {
         const { formattedURL } = req;
         const { userInfo } = req;
         
-        const response = await axios('/api/products');
+        const response = await axios('https://rezendes-modas.onrender.com/api/products');
         const products = response.data;
 
         res.render(formattedURL, {
@@ -49,7 +49,7 @@ router.get('/products/edit/:id', auth, async (req, res) => {
     try {
         const { userInfo } = req;
         
-        const response = await axios.get(`/api/products/${req.params.id}`);
+        const response = await axios.get(`https://rezendes-modas.onrender.com/api/products/${req.params.id}`);
 
         const product = response.data;
 
