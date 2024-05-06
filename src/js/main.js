@@ -1,18 +1,16 @@
-const dropdownButton = document.querySelector('.dropdown-button')
 const logoutButton = document.querySelector('.logout');
 
 function logout() {
 	document.cookie =  'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 	location.reload();
+	console.log('====================================');
+	console.log("Sair");
+	console.log('====================================');
 }
 
-function toggleDropdown() {
-	var dropdown = document.getElementById('dropdown');
-	dropdown.classList.toggle('hidden');
+if(logoutButton){
+	logoutButton.addEventListener('click', logout)
 }
-
-dropdownButton.addEventListener('click', toggleDropdown)
-logoutButton.addEventListener('click', logout)
 
 // function addProduct(){
 // 	let product_id = $('#selct-product').val()

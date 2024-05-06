@@ -38,7 +38,6 @@ router.post('/api/login', async (req, res) => {
                 email
             }
         })
-
         // Caso o usuário exista, compare a senha fornecida com a senha cadastrada
         // Crie e retorne um token JWT com os dados do usuário
         if (employee) {
