@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(data)
 
         try {
-            const loginResponse = await fetch(`http://localhost:3000/api/products`, {
+            const loginResponse = await fetch(`/api/products`, {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {
