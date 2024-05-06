@@ -8,15 +8,11 @@ router.get('/sales', auth, async (req, res) => {
     try {
         const { formattedURL } = req;
         const { userInfo } = req;
-        
-        const response = await axios('http://localhost:3000/api/sales');
-        const sales = response.data;
 
         res.render(formattedURL, {
             title: 'Vendas',
             name: userInfo.nome,
             email: userInfo.email,
-            vendas: sales
         });
     } catch(err) {
         console.log(err);

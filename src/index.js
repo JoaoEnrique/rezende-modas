@@ -52,7 +52,7 @@ app.use(loginViewsRouter);
 app.use(employeesViewsRouter);
 app.use(productsViewsRouter);
 app.use(catalogsViewsRouter);
-// app.use(salesViewsRouter);
+app.use(salesViewsRouter);
 
 // API
 app.use(employeesRouter);
