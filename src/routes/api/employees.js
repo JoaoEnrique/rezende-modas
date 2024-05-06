@@ -4,7 +4,9 @@ const { Employees } = require('../../../models/tables');
 
 router.get('/api/employees', async (req, res) => {
     try {
-        const employees = await Employees.findAll();
+        const employees = await Employees.findAll({
+            attributes: { exclude: ['password'] } // Exclui o campo de senha da consulta
+        });
         res.json(employees);
     } catch(err) {
         res.status(500).json({
