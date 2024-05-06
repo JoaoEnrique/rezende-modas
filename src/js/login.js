@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const data = Object.fromEntries(formData);
 
         try {
-            const loginResponse = await fetch("https://rezendes-modas.onrender.com/login", {
+            const loginResponse = await fetch("https://rezendes-modas.onrender.com/api/login", {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {
