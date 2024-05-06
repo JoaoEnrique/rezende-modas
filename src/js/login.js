@@ -21,10 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
         
                 Cookies.set("token", `${token}`, { expires: 7 });
                 location.replace('/');
-            } 
-
-            const errorElement = document.querySelector('.error')
-            errorElement.innerHTML = "Usuário ou senha incorretos"
+            } else {
+                const errorElement = document.querySelector('.error')
+                errorElement.innerHTML = "Usuário ou senha incorretos"
+            }
         } catch(err) {
             console.log(err);
         }
