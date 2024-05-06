@@ -19,7 +19,7 @@ router.get('/employees/list', auth, async (req, res) => {
     try {
         const { formattedURL } = req;
         const { userInfo } = req;
-        const response = await axios('http://localhost:3000/api/employees');
+        const response = await axios('/api/employees');
         const employees = response.data;
 
         res.render(formattedURL, {
@@ -47,7 +47,7 @@ router.get('/employees/register', auth, async (req, res) => {
 router.get('/employees/edit/:id', auth, async (req, res) => {
     try {
         const { userInfo } = req;
-        const response = await axios.get(`http://localhost:3000/api/employees/${req.params.id}`);
+        const response = await axios.get(`/api/employees/${req.params.id}`);
         const employee = response.data;
 
         res.render('employees/edit', {

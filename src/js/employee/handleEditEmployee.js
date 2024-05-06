@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const data = Object.fromEntries(formData);
 
         try {
-            const loginResponse = await fetch(`http://localhost:3000/api/employees/${data.id}`, {
+            const loginResponse = await fetch(`/api/employees/${data.id}`, {
                 method: "PUT",
                 body: JSON.stringify(data),
                 headers: {
