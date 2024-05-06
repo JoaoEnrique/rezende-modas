@@ -25,7 +25,7 @@ const employeesRouter = require('./routes/api/employees');
 const productsRouter = require('./routes/api/products');
 const salesRouter = require('./routes/api/sales');
 const loginRouter = require('./routes/api/login');
-// const saleItemsRouter = require('./routes/api/saleItems');
+const saleItemsRouter = require('./routes/api/saleItems');
 
 const PORT = process.env.PORT || 3000;
 
@@ -64,4 +64,4 @@ app.use(employeesRouter);
 app.use(productsRouter);
 app.use(salesRouter);
 app.use(loginRouter);
-// app.use(saleItemsRouter);
+app.use(saleItemsRouter);
