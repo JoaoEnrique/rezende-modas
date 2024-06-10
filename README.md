@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Utilizamos banco de dados mysql
+
 # Rezendes moda
 link: https://rezendes-modas.onrender.com/ <br>
 OBS: o link pega os arquivos da branch main.
