@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> Utilizamos banco de dados mysql
+> Listen com Firestore e envio de email com node
 
 # Rezendes moda
 link: https://rezendes-modas.onrender.com/ <br>
