@@ -11,9 +11,11 @@ router.get('/', (req, res) => {
         userInfo = jwt.verify(token, process.env.TOKEN_SECRET);
     }
 
+    console.log(userInfo);
+
     res.render('index', {
         title: 'Home - Rezende modas',
-        name: userInfo?.nome,
+        name: userInfo?.name,
         email: userInfo?.email
     })
 })

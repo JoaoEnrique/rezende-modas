@@ -57,7 +57,7 @@ router.post('/api/login', async (req, res) => {
             // Criação do token
             const token = jwt.sign({
                 id: employee.id,
-                nome: employee.name, 
+                name: employee.name, 
                 email,
             }, process.env.TOKEN_SECRET, {
                 expiresIn: 60 * 60 * 24 * 7
