@@ -1,0 +1,12 @@
+<script src="../../js/employee/handleEditEmployee.js"></script>
+
+<div class="w-screen bg-gray-background flex items-center justify-center" style="min-height: calc(100vh);">
+    <form class="bg-white p-4 w-380 rounded-md flex justify-center items-center flex-col shadow-lg gap-y-2.5">
+        <h3 class="title">Editar Funcionário</h3>
+        <input type="hidden" value="{{funcionario.id}}" name="id">
+        <input type="text" placeholder="Digite o nome do funcionário" class="input-facebook" value="{{funcionario.name}}" name="name">
+        <input type="email" placeholder="Digite o email" class="input-facebook" value="{{funcionario.email}}" name="email">
+        <button type="submit" class="h-12 w-full bg-red-800 rounded-md text-white">Editar</button>
+        <hr class="w-full m-4 border-gray-300 border">
+    </form>
+</div>
