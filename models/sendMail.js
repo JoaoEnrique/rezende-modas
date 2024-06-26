@@ -5,14 +5,14 @@ const transport = nodemailer.createTransport({
     port: 587,
     secure: false,
     auth: {
-        user: "readbook2059@gmail.com",
-        pass: "eqhtcmepzhezqkig"
+        user: "your-email",
+        pass: "your-password"
     }
 });
 
 function sendEmail(email, text, title) {
     return transport.sendMail({
-        from: "Rezendes Modas <readbook2059@gmail.com>",
+        from: "Rezendes Modas <your-email>",
         to: email,
         subject: title,
         html: `<h1>${title}</h1>`,
